@@ -27,11 +27,12 @@
         "ms-ossdata.vscode-pgsql"
       ],
       "settings": {
-        "files.autoSave": "afterDelay"
+        "files.autoSave": "afterDelay",
+        "workbench.editorAssociations": { "*.md": "vscode.markdown.preview.editor" }
       }
     },
     "codespaces": {
-      "openFiles": ["README.md", "UniversityApp/Program.cs"]
+      "openFiles": ["PRACTICE.md", "UniversityApp/Program.cs"]
     }
   }
 }
