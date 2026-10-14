@@ -1,0 +1,37 @@
+{
+  "name": "ADO.NET + PostgreSQL",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": { "version": "lts" }
+  },
+
+  // Чтобы в терминале команда psql сразу подключалась к базе university
+  "containerEnv": {
+    "PGHOST": "localhost",
+    "PGUSER": "postgres",
+    "PGPASSWORD": "12345",
+    "PGDATABASE": "university",
+    "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+    "DOTNET_NOLOGO": "1"
+  },
+
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y postgresql-client && dotnet restore UniversityApp && dotnet restore StudentsApp",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-ossdata.vscode-pgsql"
+      ],
+      "settings": {
+        "files.autoSave": "afterDelay"
+      }
+    },
+    "codespaces": {
+      "openFiles": ["README.md", "UniversityApp/Program.cs"]
+    }
+  }
+}
